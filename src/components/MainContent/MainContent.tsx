@@ -7,6 +7,7 @@ type MainContentProps = {
 };
 
 export default function MainContent({ children }: MainContentProps) {
+  console.log(children);
   return (
     <div className="flex justify-between py-6 gap-6">
       <CategoriesArea />

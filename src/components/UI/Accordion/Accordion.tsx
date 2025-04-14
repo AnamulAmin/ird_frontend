@@ -3,6 +3,7 @@
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { useRef, useState, useEffect } from "react";
 
 // Define types
@@ -29,14 +30,19 @@ type SubcategoryType = {
 
 interface AccordionProps {
   category: CategoryType;
+  setIsModal: (value: boolean) => void;
 }
 
-const Accordion: React.FC<AccordionProps> = ({ category }) => {
+const Accordion: React.FC<AccordionProps> = ({ category, setIsModal }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [height, setHeight] = useState<string>("0px");
   const [subcategories, setSubcategories] = useState<SubcategoryType[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false); // Track loading state
   const contentRef = useRef<HTMLDivElement>(null);
+
+  const { id } = useParams();
+
+  console.log(id, "id");
 
   const active_id = ""; // Adjust if you have logic to set active_id dynamically
 
@@ -138,13 +144,13 @@ const Accordion: React.FC<AccordionProps> = ({ category }) => {
                 <li
                   key={subcategory.id}
                   className="font-[500] text-[1rem] mb-3 relative"
+                  onClick={() => setIsModal(false)}
                 >
                   <Link
                     href={`/dua/${subcategory.cat_id}_${subcategory.subcat_id}`}
                     className={`
                     ${
-                      active_id ===
-                        `${subcategory.cat_id}_${subcategory.subcat_id}` &&
+                      id === `${subcategory.cat_id}_${subcategory.subcat_id}` &&
                       "text-primary"
                     }
                     hover:text-primary`}

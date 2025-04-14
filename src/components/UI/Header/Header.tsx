@@ -66,7 +66,7 @@ export default function Header({
         size="lg"
         // scaleEffect={false}
       >
-        <CategoriesArea isModal={true} />
+        <CategoriesArea isModal={true} setIsModal={setIsShowCategoryFilter} />
       </Modal>
     </header>
   );

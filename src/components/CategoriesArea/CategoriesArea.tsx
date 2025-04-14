@@ -31,8 +31,10 @@ const CategorySkeleton = () => (
 
 export default function CategoriesArea({
   isModal = false,
+  setIsModal,
 }: {
   isModal?: boolean;
+  setIsModal: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [categories, setCategories] = useState<categoryType[]>([]);
@@ -113,6 +115,7 @@ export default function CategoriesArea({
                 category={category}
                 key={category.id}
                 // loading={loading}
+                setIsModal={setIsModal}
               />
             ))
           ) : (
