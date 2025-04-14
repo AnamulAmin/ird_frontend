@@ -3,7 +3,11 @@ import DuaHeader from "./DuaHeader/DuaHeader";
 import DuaCard from "./DuaCard/DuaCard";
 import { DuaType } from "@/app/dua/[id]/page";
 
-export default function DuaArea({ dua }: any) {
+type DuaAreaProps = {
+  dua: DuaType[];
+};
+
+export default function DuaArea({ dua }: DuaAreaProps) {
   return (
     <div
       className="w-full h-[86dvh] overflow-auto"
@@ -11,7 +15,7 @@ export default function DuaArea({ dua }: any) {
     >
       <DuaHeader name="The servant is dependent on his Lord" />
 
-      {dua && dua.map((item: DuaType) => <DuaCard data={item} />)}
+      {dua && dua.map((item) => <DuaCard data={item} key={item.id} />)}
     </div>
   );
 }

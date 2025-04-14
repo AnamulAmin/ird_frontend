@@ -44,7 +44,7 @@ export default function CategoriesArea({
       try {
         setLoading(true);
         const res = await axios.get<categoryType[]>(
-          "http://localhost:4000/categories"
+          "https://ird-backend-o37f.onrender.com/categories"
         );
         const fetchedCategories = res.data;
         setCategories(fetchedCategories);
@@ -53,7 +53,7 @@ export default function CategoriesArea({
         await Promise.all(
           fetchedCategories.map((category) =>
             axios.get(
-              `http://localhost:4000/subcategories?cat_id=${category.cat_id}`
+              `https://ird-backend-o37f.onrender.com/subcategories?cat_id=${category.cat_id}`
             )
           )
         );

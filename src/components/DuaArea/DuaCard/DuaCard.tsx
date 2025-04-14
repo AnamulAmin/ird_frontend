@@ -4,36 +4,40 @@ import { LuCopy, LuShare2 } from "react-icons/lu";
 import { CiBookmark } from "react-icons/ci";
 import { IoBulbOutline } from "react-icons/io5";
 import { BsExclamationOctagon } from "react-icons/bs";
-import { DuaType } from "@/app/dua/[id]/page";
 import PlayAudio from "@/components/PlayAudio/PlayAudio";
-const DuaCard: React.FC<any> = ({ data }) => {
+
+// Define type here or import from shared location
+export type DuaType = {
+  id?: number;
+  dua_name_en?: string;
+  top_en?: string;
+  dua_arabic?: string;
+  transliteration_en?: string;
+  translation_en?: string;
+  refference_en?: string;
+  audio?: string;
+};
+
+type DuaCardProps = {
+  data: DuaType;
+};
+
+const DuaCard: React.FC<DuaCardProps> = ({ data }) => {
   const {
-    id,
-    cat_id,
-    subcat_id,
-    dua_id,
-    dua_name_bn,
     dua_name_en,
-    top_bn,
     top_en,
     dua_arabic,
-    dua_indopak,
-    clean_arabic,
-    transliteration_bn,
     transliteration_en,
-    translation_bn,
     translation_en,
-    bottom_bn,
-    bottom_en,
-    refference_bn,
     refference_en,
     audio,
   } = data;
+
   return (
-    <div className="w-full mx-auto bg-white  rounded-xl p-8 my-4 border border-gray-border">
+    <div className="w-full mx-auto bg-white rounded-xl p-8 my-4 border border-gray-border">
       {/* Card Header */}
       <div className="flex items-center gap-3 mb-5">
-        <div className=" text-green-600 rounded-full p-2">
+        <div className="text-green-600 rounded-full p-2">
           <Image
             src="/traced.png"
             width={20}
@@ -42,7 +46,6 @@ const DuaCard: React.FC<any> = ({ data }) => {
             className="w-[20px]"
           />
         </div>
-
         {dua_name_en && (
           <h2 className="text-xl font-semibold text-green-600">
             {dua_name_en}
@@ -63,8 +66,7 @@ const DuaCard: React.FC<any> = ({ data }) => {
       {/* Transliteration */}
       {transliteration_en && (
         <p className="text-gray-600 italic mb-4">
-          <strong>Transliteration:</strong>
-          {transliteration_en}
+          <strong>Transliteration:</strong> {transliteration_en}
         </p>
       )}
 
@@ -85,26 +87,25 @@ const DuaCard: React.FC<any> = ({ data }) => {
         </div>
       )}
 
-      {/* Play Button */}
+      {/* Play Button & Actions */}
       <div className="mt-6 flex justify-between">
         {audio && <PlayAudio audio={audio} />}
 
-        <div className="">
-          <button className="cursor-pointer text-gray-dark rounded-full p-3 transition duration-300">
-            <LuCopy size={20} />
-          </button>
-          <button className="cursor-pointer text-gray-dark rounded-full p-3 transition duration-300">
-            <CiBookmark size={20} />
-          </button>
-          <button className="cursor-pointer text-gray-dark rounded-full p-3 transition duration-300">
-            <IoBulbOutline size={20} />
-          </button>
-          <button className="cursor-pointer text-gray-dark rounded-full p-3 transition duration-300">
-            <LuShare2 size={20} />
-          </button>
-          <button className="cursor-pointer text-gray-dark rounded-full p-3 transition duration-300">
-            <BsExclamationOctagon size={20} />
-          </button>
+        <div className="flex">
+          {[
+            LuCopy,
+            CiBookmark,
+            IoBulbOutline,
+            LuShare2,
+            BsExclamationOctagon,
+          ].map((Icon, i) => (
+            <button
+              key={i}
+              className="cursor-pointer text-gray-dark rounded-full p-3 transition duration-300"
+            >
+              <Icon size={20} />
+            </button>
+          ))}
         </div>
       </div>
     </div>

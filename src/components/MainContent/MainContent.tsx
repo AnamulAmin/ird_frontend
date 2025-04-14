@@ -1,14 +1,16 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import CategoriesArea from "../CategoriesArea/CategoriesArea";
-import DuaArea from "../DuaArea/DuaArea";
 import SettingsArea from "../SettingsArea/SettingsArea";
 
-export default function MainContent({ children }) {
+type MainContentProps = {
+  children: ReactNode;
+};
+
+export default function MainContent({ children }: MainContentProps) {
   return (
     <div className="flex justify-between py-6 gap-6">
       <CategoriesArea />
       {children}
-
       <SettingsArea />
     </div>
   );

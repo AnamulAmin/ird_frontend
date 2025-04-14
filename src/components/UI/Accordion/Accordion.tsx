@@ -45,7 +45,7 @@ const Accordion: React.FC<AccordionProps> = ({ category }) => {
       try {
         setIsLoading(true); // Start loading
         const res = await axios.get<SubcategoryType[]>(
-          `http://localhost:4000/subcategories?cat_id=${category.cat_id}`
+          `https://ird-backend-o37f.onrender.com/subcategories?cat_id=${category.cat_id}`
         );
 
         console.log("Subcategories response:", res.data); // Log fetched data

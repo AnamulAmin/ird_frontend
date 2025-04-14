@@ -62,7 +62,7 @@ async function getDua(id: string): Promise<DuaType | null> {
   const [catId, subcatId] = idArray;
 
   const res = await fetch(
-    `http://localhost:4000/duas?cat_id=${catId}&subcat_id=${subcatId}`
+    `https://ird-backend-o37f.onrender.com/duas?cat_id=${catId}&subcat_id=${subcatId}`
   );
   if (!res.ok) {
     return null;
@@ -76,14 +76,14 @@ async function getDua(id: string): Promise<DuaType | null> {
 export async function generateStaticParams(): Promise<{ id: string }[]> {
   try {
     const res = await axios.get<CategoryType[]>(
-      "http://localhost:4000/categories"
+      "https://ird-backend-o37f.onrender.com/categories"
     );
     const fetchedCategories = res.data;
 
     const subcategoryResponses = await Promise.all(
       fetchedCategories.map((category) =>
         axios.get<SubcategoryType[]>(
-          `http://localhost:4000/subcategories?cat_id=${category.cat_id}`
+          `https://ird-backend-o37f.onrender.com/subcategories?cat_id=${category.cat_id}`
         )
       )
     );

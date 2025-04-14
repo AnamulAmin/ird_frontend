@@ -2,7 +2,6 @@
 import Image from "next/image";
 import React from "react";
 import { IoClose } from "react-icons/io5";
-import { TiArrowLeft } from "react-icons/ti";
 
 export default function Sidebar({
   setOpen,

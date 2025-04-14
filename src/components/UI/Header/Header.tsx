@@ -14,8 +14,8 @@ export default function Header({
   setOpen,
   open,
 }: {
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>> | null;
+  open: boolean | null;
 }) {
   const [isShowSettings, setIsShowSetting] = useState<boolean>(false);
   const [isShowCategoryFilter, setIsShowCategoryFilter] =
