@@ -88,10 +88,10 @@ const DuaCard: React.FC<DuaCardProps> = ({ data }) => {
       )}
 
       {/* Play Button & Actions */}
-      <div className="mt-6 flex justify-between">
+      <div className="mt-6 flex justify-between flex-wrap">
         {audio && <PlayAudio audio={audio} />}
 
-        <div className="flex">
+        <div className="flex flex-wrap w-full md:w-[80%]">
           {[
             LuCopy,
             CiBookmark,

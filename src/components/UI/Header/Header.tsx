@@ -21,7 +21,7 @@ export default function Header({
   const [isShowCategoryFilter, setIsShowCategoryFilter] =
     useState<boolean>(false);
   return (
-    <header className="flex justify-between items-center">
+    <header className="flex justify-between items-center px-3 py-2 md:p-0">
       <h2 className="font-poppins text-[24px] font-bold hidden md:block">
         Dua Page
       </h2>

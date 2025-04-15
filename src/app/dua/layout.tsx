@@ -10,8 +10,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <main
-      className={`w-full flex gap-4 p-6 transition-all duration-300 ${
-        open ? "md:pl-[120px]" : "pl-8"
+      className={`w-full flex gap-4 p-0 py-1 sm:p-6 transition-all duration-300 ${
+        open ? "md:pl-[120px]" : "pl-1 sm:pl-8"
       }`}
     >
       <Sidebar setOpen={setOpen} open={open} />
