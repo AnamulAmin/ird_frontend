@@ -37,35 +37,37 @@ const DuaCard: React.FC<DuaCardProps> = ({ data }) => {
     <div className="w-full mx-auto bg-white rounded-xl p-8 my-4 border border-gray-border">
       {/* Card Header */}
       <div className="flex items-center gap-3 mb-5">
-        <div className="text-green-600 rounded-full p-2">
+        <div className="text-green-600 rounded-full p-2 w-[60px] md:w-[50px]">
           <Image
             src="/traced.png"
             width={20}
             height={20}
             alt="traced image"
-            className="w-[20px]"
+            className="w-full"
           />
         </div>
         {dua_name_en && (
-          <h2 className="text-xl font-semibold text-green-600">
+          <h2 className="text-md sm:text-xl font-semibold text-green-600">
             {dua_name_en}
           </h2>
         )}
       </div>
 
       {/* Description */}
-      {top_en && <p className="text-gray-700 mb-6">{top_en}</p>}
+      {top_en && (
+        <p className="text-gray-700 mb-6 text-md sm:text-[1rem]">{top_en}</p>
+      )}
 
       {/* Arabic Text */}
       {dua_arabic && (
-        <div className="text-right text-3xl font-light leading-relaxed text-gray-800 mb-6 !font-quran">
+        <div className="text-right  font-light leading-relaxed text-gray-800 mb-6 !font-quran text-md sm:text-[1rem]">
           {dua_arabic}
         </div>
       )}
 
       {/* Transliteration */}
       {transliteration_en && (
-        <p className="text-gray-600 italic mb-4">
+        <p className="text-gray-600 italic mb-4 text-md sm:text-[1rem]">
           <strong>Transliteration:</strong> {transliteration_en}
         </p>
       )}
@@ -79,7 +81,7 @@ const DuaCard: React.FC<DuaCardProps> = ({ data }) => {
 
       {/* Reference */}
       {refference_en && (
-        <div className="text-sm text-green-600 font-semibold">
+        <div className="text-sm text-green-600 font-semibold text-md sm:text-[1rem]">
           Reference:{" "}
           <h4 className="text-gray-700 font-[600] text-[1rem]">
             {refference_en}
